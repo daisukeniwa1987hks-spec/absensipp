@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Pendidikan Pancasila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen p-4 sm:p-8">
+
+    <div id="message-modal" class="modal">
+        <div class="modal-content">
+            <div id="modal-spinner" class="spinner"></div>
+            <p id="modal-text" class="text-gray-700 text-lg mb-4"></p>
+            <button id="modal-close" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 shadow-md">Tutup</button>
+        </div>
+    </div>
+
+    <div id="confirm-input-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="confirm-input-title" class="text-xl font-bold mb-4"></h3>
+            <p id="confirm-input-message" class="text-gray-700 mb-4"></p>
+            <input type="text" id="confirm-input-field" class="w-full rounded-md border-gray-300 shadow-sm p-2 text-gray-700 hidden">
+            <div class="flex justify-center space-x-4 mt-4">
+                <button id="confirm-ok-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Ya</button>
+                <button id="confirm-cancel-btn" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full transition duration-300">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="student-management-modal" class="modal">
+        <div class="modal-content modal-manage">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Manajemen Siswa Kelas <span id="manage-class-title"></span></h3>
+            
+            <div class="mb-6 p-4 border rounded-lg bg-gray-50">
+                <label class="block text-left text-sm font-medium text-gray-700 mb-2">Tambah Siswa Baru</label>
+                <div class="flex space-x-2">
+                    <input type="text" id="new-student-name" placeholder="Nama Siswa" class="flex-grow rounded-md border-gray-300 shadow-sm p-2 text-gray-700">
+                    <button id="add-student-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Tambah</button>
+                </div>
+            </div>
+
+            <div class="mb-6 p-4 border rounded-lg bg-gray-50">
+                <label class="block text-left text-sm font-medium text-gray-700 mb-2">Unggah Daftar Siswa (CSV)</label>
+                <button id="upload-csv-modal-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">Pilih File CSV</button>
+                <input type="file" id="csv-file-input" class="hidden" accept=".csv">
+            </div>
+
+            <div class="max-h-60 overflow-y-auto border rounded-lg p-2 bg-white">
+                <ul id="manage-student-list" class="divide-y divide-gray-200">
+                    </ul>
+            </div>
+
+            <button id="close-manage-modal" class="mt-6 bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full transition duration-300 shadow-md">Tutup</button>
+        </div>
+    </div>
+    
+    <div class="container bg-white rounded-2xl shadow-xl p-6 sm:p-10">
+        <div class="flex flex-col sm:flex-row justify-center items-center mb-6 pb-4">
+            <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+                <img src="https://iili.io/K5xh2xn.png" alt="Logo SMP Negeri 12 Tasikmalaya" class="h-12 w-12 object-contain">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Absensi Pendidikan Pancasila Kelas VIII Nama Guru Harsya Khair Syah, M.Pd</h1>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center space-x-4 mb-6">
+             <button id="recap-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Rekap Kehadiran</button>
+             <button id="manage-students-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Manajemen Siswa</button>
+        </div>
+
+
+        <div class="flex items-center justify-center mb-6 p-3 bg-gray-100 rounded-lg">
+            <span class="text-sm font-medium text-gray-600 mr-2">ID Pengguna:</span>
+            <span id="user-id" class="text-sm font-semibold text-gray-800 truncate">Memuat...</span>
+        </div>
+
+        <div id="home-view" class="mb-
